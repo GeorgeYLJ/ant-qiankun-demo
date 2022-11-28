@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>静态页面</title>
+</head>
+<body>
+
+<div id="container">
+    <h3>我是嵌入的静态页面一</h3>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+        const render = ($) => {
+            return Promise.resolve();
+        };
+
+        ((global) => {
+            global['purehtml'] = {
+                bootstrap: () => {
+                    console.log('purehtml bootstrap');
+                    return Promise.resolve();
+                },
+                mount: () => {
+                    console.log('purehtml mount');
+                    return render($);
+                },
+                unmount: () => {
+                    console.log('purehtml unmount');
+                    return Promise.resolve();
+                },
+            };
+        })(window);
+    </script>
+</body>
+</html>
